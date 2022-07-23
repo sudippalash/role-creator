@@ -39,7 +39,13 @@
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
                                         <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">Show</a>
                                         <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0)" onclick="deleted('{{ route($routeName . '.destroy', $val->id) }}')">Delete</a>
+                                        <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">Delete</a>
+                                        
+
+                                        <form id="role-delete-form{{ $val->id }}" action="{{ route($routeName . '.destroy', $val->id) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </div>
                                 </div>
                             </td>

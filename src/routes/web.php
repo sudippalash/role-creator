@@ -12,6 +12,6 @@ Route::group(['namespace' => 'Sudip\RoleCreator\Http\Controllers'], function () 
         Route::get(config('role-creator.route_prefix') . '/{id}', 'RoleController@show')->name(config('role-creator.route_name').'.show');
         Route::get(config('role-creator.route_prefix') . '/{id}/edit', 'RoleController@edit')->name(config('role-creator.route_name').'.edit');
         Route::put(config('role-creator.route_prefix'). '/{id}/update', 'RoleController@update')->name(config('role-creator.route_name') . '.update');
-        Route::delete(config('role-creator.route_prefix'). '/{id}/destroy', 'RoleController@update')->name(config('role-creator.route_name') . '.destroy');
+        Route::delete(config('role-creator.route_prefix'). '/{id}/destroy', 'RoleController@destroy')->name(config('role-creator.route_name') . '.destroy');
     });
 });
