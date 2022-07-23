@@ -106,7 +106,25 @@ In `config/role-creator.php` config file you should set your data.
     ];
 ```
 
-In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then run the seed with this command: `php artisan db:seed --class=PermissionSeeder`.
+Clear your config cache. This package requires access to the permission config. Generally it's bad practice to do config-caching in a development environment. If you've been caching configurations locally, clear your config cache with either of these commands:
+
+```bash
+php artisan optimize:clear
+# or
+php artisan config:clear
+```
+
+Run the migrations: After the config and migration have been published and configured, you can create the tables for this package by running:
+
+```bash
+php artisan migrate
+```
+
+In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then run the seed with this command:
+
+```bash
+php artisan db:seed --class=PermissionSeeder
+```
 
 ## License
 

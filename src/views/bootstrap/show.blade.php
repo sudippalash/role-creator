@@ -16,11 +16,11 @@
             <table class="table browser mt-4 no-border">
                 <tbody>
                     <tr>
-                        <td>{{ __('Name') }}</td>
+                        <td>Name</td>
                         <td align="right">{{ $data->name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ __('Guard') }}</td>
+                        <td>Guard</td>
                         <td align="right">{{ $data->guard_name }}</td>
                     </tr>
                 </tbody>
@@ -31,8 +31,8 @@
                 <table class="table table-striped mb-0">
                     <thead>
                     <tr>
-                        <th>{{ __('Module') }}</th>
-                        <th>{{ __('Permissions') }}</th>
+                        <th>Module</th>
+                        <th>Permissions</th>
                     </tr>
                     </thead>
                     <tbody>

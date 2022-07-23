@@ -12,8 +12,8 @@
     <table class="table table-striped mb-0">
         <thead>
         <tr>
-            <th>{{ __('Module') }}</th>
-            <th>{{ __('Permissions') }}</th>
+            <th>Module</th>
+            <th>Permissions</th>
         </tr>
         </thead>
         <tbody>
@@ -23,7 +23,7 @@
                 <tr>
                     <td>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" {{ (array_key_exists($module, $permissioDone))?'checked':'' }} class="custom-control-input" id="module{{ $i }}" onclick="moduleCheck({{ $i }})">
+                            <input type="checkbox" class="custom-control-input" id="module{{ $i }}" onclick="moduleCheck({{ $i }})"{{ (array_key_exists($module, $permissioDone)) ? ' checked' : '' }}>
                             <label class="custom-control-label" for="module{{ $i }}">{{ ucfirst($module) }}</label>
                         </div>
                     </td>
@@ -31,8 +31,8 @@
                         <div class="row" id="moduleContent{{ $i }}">
                             @foreach($moduleArr as $md)
                                 <div class="col-sm-2 custom-control custom-checkbox">
-                                    <input class="custom-control-input" id="permission{{ $md->id }}" name="permissions[]" type="checkbox" value="{{ $md->name }}" {{ (isset($permissioDone[$module]) && in_array($md->name, $permissioDone[$module]))?'checked':'' }}>
-                                    <label for="permission{{ $md->id }}" class="custom-control-label">{{ str_replace($module, '', $md->name) }}</label><br>
+                                    <input type="checkbox" class="custom-control-input" id="permission{{ $md->id }}" name="permissions[]" value="{{ $md->name }}"{{ (isset($permissioDone[$module]) && in_array($md->name, $permissioDone[$module])) ? ' checked' : '' }}>
+                                    <label class="custom-control-label" for="permission{{ $md->id }}">{{ str_replace($module, '', $md->name) }}</label><br>
                                 </div>
                             @endforeach            
                         </div>
@@ -51,7 +51,7 @@
 
 <script>
     function moduleCheck(k) {
-        if (document.getElementById('module'+k).checked==true) {
+        if (document.getElementById('module'+k).checked == true) {
             $('#moduleContent'+k+' input').prop('checked', true);
         } else {
             $('#moduleContent'+k+' input').prop('checked', false);
