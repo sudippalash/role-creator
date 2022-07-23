@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddModuleColumnToPermissionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        $tableName = config('permission.table_names.permissions');
+        Schema::table($tableName, function (Blueprint $table) {
+            $table->string('module')->after('id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        $tableName = config('permission.table_names.permissions');
+        Schema::table($tableName, function (Blueprint $table) {
+            $table->dropColumn('module');
+        });
+    }
+}

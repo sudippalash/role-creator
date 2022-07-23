@@ -1,0 +1,37 @@
+{
+    "name": "sudippalash/role-creator",
+    "description": "Laravel package for Role Management",
+    "keywords": [
+        "Sudip",
+        "Laravel Role Management",
+        "Role Management",
+        "Laravel"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sudip Palash",
+            "email": "palash.sudip@gmail.com"
+        }
+    ],
+    "require": {
+        "spatie/laravel-permission": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+          "Sudip\\RoleCreator\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sudip\\RoleCreator\\Providers\\AppServiceProvider",
+                "Sudip\\RoleCreator\\Providers\\RouteServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
