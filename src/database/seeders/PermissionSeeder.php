@@ -11,22 +11,18 @@ class PermissionSeeder extends Seeder
     {
         $arrPermissions = [
             'user' => [
-                'list user',
-                'show user',
-                'add user',
-                'edit user',
-                'delete user',
-                'bulk action user'
+                'list',
+                'show',
+                'add',
+                'edit',
+                'delete'
             ],
         ];
 
         if (!empty($arrPermissions)) {
             foreach ($arrPermissions as $key => $apArr) {
                 foreach ($apArr as $ap) {
-                    Permission::updateOrCreate(
-                        ['module' => $key, 'name' => $ap, 'guard_name' => 'admin'], 
-                        ['module' => $key, 'name' => $ap, 'guard_name' => 'admin']
-                    );
+                    Permission::updateOrCreate(['module' => $key, 'name' => $ap . ' ' . $key, 'guard_name' => config('role-creator.auth_guard_name')]);
                 }
             }
         }

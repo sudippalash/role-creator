@@ -7,23 +7,27 @@
 
 `role-creator` is a role management package of `Laravel` that provides options to manage role.
 
+Note: This package is wrapper of `spatie/laravel-permission` package.
+
 ## Install
 
 Via Composer
 
 ```bash
-$ composer require sudippalash/role-creator
+composer require sudippalash/role-creator
 ```
 
-#### Publish config file
+#### Publish config, migration & seeds files
 
-You will need to publish config file to add setting for `role-creator`.
+You should publish the migration files, the config/permission.php, config/role-creator.php config file and PermissionSeeder file with:
 
+```bash
+php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider"
 ```
-php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider" --tag=role-creator
-```
 
-In `config/role-creator.php` config file you should set `role-creator` global path.
+For `config/permission.php` config file you should check `spatie/laravel-permission` package documentation.
+
+In `config/role-creator.php` config file you should set your data.
 
 ```php
     return [
@@ -59,9 +63,20 @@ In `config/role-creator.php` config file you should set `role-creator` global pa
         | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
         */
 
-        'route_name' => 'admin.role',
-        'route_prefix' => 'admin/role',
+        'route_name' => 'user.role',
+        'route_prefix' => 'user/role',
         'middleware' => [],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Auth Guard Name
+        |--------------------------------------------------------------------------
+        |
+        | Which authentication guard you use for role. Example: web or admin
+        | 
+        */
+
+        'auth_guard_name' => 'web',
 
         /*
         |--------------------------------------------------------------------------
@@ -73,7 +88,6 @@ In `config/role-creator.php` config file you should set `role-creator` global pa
         */
 
         'bootstrap_v' => 4,
-
 
         /*
         |--------------------------------------------------------------------------
@@ -92,23 +106,7 @@ In `config/role-creator.php` config file you should set `role-creator` global pa
     ];
 ```
 
-
-#### Publish migration file
-
-You will need to publish migration file to add field for `permissions` table.
-
-```
-php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider" --tag=role-migrations
-```
-
-
-#### Publish seeder file
-
-You will need to publish seeder file to add data in `permissions` table.
-
-```
-php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider" --tag=role-seeds
-```
+In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then run the seed with this command: `php artisan db:seed --class=PermissionSeeder`.
 
 ## License
 

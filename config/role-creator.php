@@ -33,9 +33,20 @@ return [
     | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
     */
 
-    'route_name' => 'admin.role',
-    'route_prefix' => 'admin/role',
+    'route_name' => 'user.role',
+    'route_prefix' => 'user/role',
     'middleware' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Auth Guard Name
+    |--------------------------------------------------------------------------
+    |
+    | Which authentication guard you use for role. Example: web or admin
+    | 
+    */
+
+    'auth_guard_name' => 'web',
 
     /*
     |--------------------------------------------------------------------------
