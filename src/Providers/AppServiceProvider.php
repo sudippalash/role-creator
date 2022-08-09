@@ -18,9 +18,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'rolemake');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'role-creator');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'rolemake');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'role-creator');
 
         //Spatie Permission config & migration published::START
         $ds = new \ReflectionClass(\Spatie\Permission\PermissionServiceProvider::class);

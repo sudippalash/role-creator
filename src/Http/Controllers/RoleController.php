@@ -37,7 +37,7 @@ class RoleController extends Controller
 
         $cssClass = $this->cssGenerate();
         $routeName = config('role-creator.route_name');
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'rolemake::bootstrap3' : 'rolemake::bootstrap';
+        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
         return view($blade . '.index', compact('records', 'routeName', 'cssClass'));
     }
@@ -56,7 +56,7 @@ class RoleController extends Controller
         
         $cssClass = $this->cssGenerate();
         $routeName = config('role-creator.route_name');
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'rolemake::bootstrap3' : 'rolemake::bootstrap';
+        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
         return view($blade . '.create', compact('permissioDone', 'permissionArr', 'routeName', 'cssClass'));
     }
@@ -75,7 +75,7 @@ class RoleController extends Controller
 
         $data->syncPermissions($request->permissions);
 
-        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('rolemake::sp_role_creator.create_message'));
+        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('role-creator::sp_role_creator.create_message'));
     }
 
     public function show(Request $request, $id)
@@ -89,7 +89,7 @@ class RoleController extends Controller
         
         $cssClass = $this->cssGenerate();
         $routeName = config('role-creator.route_name');
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'rolemake::bootstrap3' : 'rolemake::bootstrap';
+        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
         return view($blade . '.show', compact('data', 'permissioDone', 'routeName', 'cssClass'));
     }
@@ -114,7 +114,7 @@ class RoleController extends Controller
         
         $cssClass = $this->cssGenerate();
         $routeName = config('role-creator.route_name');
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'rolemake::bootstrap3' : 'rolemake::bootstrap';
+        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
         return view($blade . '.edit', compact('data', 'permissioDone', 'permissionArr', 'routeName', 'cssClass'));
     }
@@ -136,7 +136,7 @@ class RoleController extends Controller
 
         $data->syncPermissions($request->permissions);
 
-        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('rolemake::sp_role_creator.update_message'));
+        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('role-creator::sp_role_creator.update_message'));
     }
 
     public function destroy(Request $request, $id)
@@ -144,6 +144,6 @@ class RoleController extends Controller
         $data = Role::where('id', $id)->firstOrFail();
         $data->delete();
         
-        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('rolemake::sp_role_creator.delete_message'));
+        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('role-creator::sp_role_creator.delete_message'));
     }
 }
