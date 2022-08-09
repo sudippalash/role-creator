@@ -5,21 +5,22 @@
     <div class="{{ $cssClass['card'] }}">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <h4 class="m-0">Role Create</h4>
+                <h4 class="m-0">{{ trans('rolemake::sp_role_creator.role_edit') }}</h4>
                 <div class="d-flex">
-                    <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.index') }}">Back to List</a>
+                    <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.index') }}">{{ trans('rolemake::sp_role_creator.back_to_list') }}</a>
                 </div>
             </div>
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route($routeName . '.store') }}">
+            <form method="POST" action="{{ route($routeName . '.update', $data->id) }}">
                 @csrf
+                @method('PUT')
         
                 @include('rolemake::bootstrap.form')
 
                 <hr>
-                <button type="submit" id="submit" class="btn {{ $cssClass['btn'] }} float-right">Save</button>
+                <button type="submit" id="submit" class="btn {{ $cssClass['btn'] }} float-right">{{ trans('rolemake::sp_role_creator.update') }}</button>
             </form>
         </div>
     </div>

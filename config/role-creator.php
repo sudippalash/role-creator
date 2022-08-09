@@ -33,8 +33,8 @@ return [
     | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
     */
 
-    'route_name' => 'user.role',
-    'route_prefix' => 'user/role',
+    'route_name' => 'user.roles',
+    'route_prefix' => 'user/roles',
     'middleware' => [],
 
     /*
@@ -58,6 +58,18 @@ return [
     */
 
     'bootstrap_v' => 4,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Flash Messages
+    |--------------------------------------------------------------------------
+    |
+    | After Save/Update flash message session key name
+    | 
+    */
+
+    'flash_success' => 'success',
+    'flash_error' => 'error',
 
     /*
     |--------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>Role Name <span class="text-danger">*</span></label>
+    <label>{{ trans('rolemake::sp_role_creator.name') }} <span class="text-danger">*</span></label>
     <input type="text" class="form-control" name="name" value="{{ old('name', isset($data) ? $data->name : '') }}" required>
 
     @if ($errors->has('name'))
@@ -8,12 +8,12 @@
 </div>
 
 <div class="form-group">
-    <h6>Assign permissions to role</h6>
+    <h6>{{ trans('rolemake::sp_role_creator.assign_role_permission') }}</h6>
     <table class="table table-striped mb-0">
         <thead>
         <tr>
-            <th>Module</th>
-            <th>Permissions</th>
+            <th>{{ trans('rolemake::sp_role_creator.module') }}</th>
+            <th>{{ trans('rolemake::sp_role_creator.permissions') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
                 @endforeach
             @else
             <tr>
-                <td colspan="2" class="text-center">Permission not found!</td>
+                <td colspan="2" class="text-center">{{ trans('rolemake::sp_role_creator.permission_not_found') }}</td>
             </tr>
             @endif
         </tbody>

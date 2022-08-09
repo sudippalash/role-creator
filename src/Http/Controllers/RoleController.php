@@ -39,7 +39,7 @@ class RoleController extends Controller
         $routeName = config('role-creator.route_name');
         $blade = config('role-creator.bootstrap_v') == 3 ? 'rolemake::bootstrap3' : 'rolemake::bootstrap';
 
-        return view($blade . '.index', compact('records', 'routeName', 'cssClass'))->with('list', 1);
+        return view($blade . '.index', compact('records', 'routeName', 'cssClass'));
     }
 
     public function create()
@@ -75,7 +75,7 @@ class RoleController extends Controller
 
         $data->syncPermissions($request->permissions);
 
-        return redirect()->route(config('role-creator.route_name') . '.index')->with('success', __('Role Created Successfully!'));
+        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('rolemake::sp_role_creator.create_message'));
     }
 
     public function show(Request $request, $id)
@@ -116,7 +116,7 @@ class RoleController extends Controller
         $routeName = config('role-creator.route_name');
         $blade = config('role-creator.bootstrap_v') == 3 ? 'rolemake::bootstrap3' : 'rolemake::bootstrap';
 
-        return view($blade . '.edit', compact('data', 'permissioDone', 'permissionArr', 'routeName', 'cssClass'))->with('edit', $id);
+        return view($blade . '.edit', compact('data', 'permissioDone', 'permissionArr', 'routeName', 'cssClass'));
     }
 
     public function update(Request $request, $id)
@@ -136,7 +136,7 @@ class RoleController extends Controller
 
         $data->syncPermissions($request->permissions);
 
-        return redirect()->route(config('role-creator.route_name') . '.index')->with('success', __('Role Updated Successfully!'));
+        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('rolemake::sp_role_creator.update_message'));
     }
 
     public function destroy(Request $request, $id)
@@ -144,6 +144,6 @@ class RoleController extends Controller
         $data = Role::where('id', $id)->firstOrFail();
         $data->delete();
         
-        return redirect()->route(config('role-creator.route_name') . '.index')->with('success', __('Role Deleted Successfully!'));
+        return redirect()->route(config('role-creator.route_name') . '.index')->with(config('role-creator.flash_success'), trans('rolemake::sp_role_creator.delete_message'));
     }
 }

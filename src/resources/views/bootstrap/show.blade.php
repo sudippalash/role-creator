@@ -5,9 +5,9 @@
     <div class="{{ $cssClass['card'] }}">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <h4 class="m-0">Role Show</h4>
+                <h4 class="m-0">{{ trans('rolemake::sp_role_creator.role_show') }}</h4>
                 <div class="d-flex">
-                    <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.index') }}">Back to List</a>
+                    <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.index') }}">{{ trans('rolemake::sp_role_creator.back_to_list') }}</a>
                 </div>
             </div>
         </div>
@@ -16,23 +16,23 @@
             <table class="table browser mt-4 no-border">
                 <tbody>
                     <tr>
-                        <td>Name</td>
+                        <td>{{ trans('rolemake::sp_role_creator.name') }}</td>
                         <td align="right">{{ $data->name }}</td>
                     </tr>
                     <tr>
-                        <td>Guard</td>
+                        <td>{{ trans('rolemake::sp_role_creator.guard') }}</td>
                         <td align="right">{{ $data->guard_name }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="form-group">
-                <h6>Assign permissions to role</h6>
+                <h6>{{ trans('rolemake::sp_role_creator.assign_role_permission') }}</h6>
                 <table class="table table-striped mb-0">
                     <thead>
                     <tr>
-                        <th>Module</th>
-                        <th>Permissions</th>
+                        <th>{{ trans('rolemake::sp_role_creator.module') }}</th>
+                        <th>{{ trans('rolemake::sp_role_creator.permissions') }}</th>
                     </tr>
                     </thead>
                     <tbody>

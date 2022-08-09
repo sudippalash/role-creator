@@ -18,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../views', 'rolemake');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'rolemake');
+
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'rolemake');
 
         //Spatie Permission config & migration published::START
         $ds = new \ReflectionClass(\Spatie\Permission\PermissionServiceProvider::class);
@@ -45,6 +47,10 @@ class AppServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../database/seeders/PermissionSeeder.php' => database_path('seeders/PermissionSeeder.php'),
         ], 'seeds');
+
+        $this->publishes([
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/role-creator'),
+        ]);
     }
 
     protected function getMigrationFileName($migrationFileName, $time): string

@@ -5,9 +5,9 @@
     <div class="{{ $cssClass['card'] }}">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <h4 class="m-0">Role</h4>
+                <h4 class="m-0">{{ trans('rolemake::sp_role_creator.role') }}</h4>
                 <div class="d-flex">
-                    <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.create') }}">Create</a>
+                    <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.create') }}">{{ trans('rolemake::sp_role_creator.create') }}</a>
                 </div>
             </div>
         </div>
@@ -17,10 +17,10 @@
                 <table class="table {{ $cssClass['table'] }}">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Guard</th>
-                            <th>Created At</th>
+                            <th>{{ trans('rolemake::sp_role_creator.id') }}</th>
+                            <th>{{ trans('rolemake::sp_role_creator.name') }}</th>
+                            <th>{{ trans('rolemake::sp_role_creator.guard') }}</th>
+                            <th>{{ trans('rolemake::sp_role_creator.created_at') }}</th>
                             <th class="{{ $cssClass['table_action_col_width'] }}"></th>
                         </tr>
                     </thead>
@@ -35,11 +35,11 @@
                             <td>{{ $val->created_at }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">Action</button>
+                                    <button type="button" class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">{{ trans('rolemake::sp_role_creator.action') }}</button>
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
-                                        <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">Show</a>
-                                        <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">Delete</a>
+                                        <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">{{ trans('rolemake::sp_role_creator.show') }}</a>
+                                        <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">{{ trans('rolemake::sp_role_creator.edit') }}</a>
+                                        <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">{{ trans('rolemake::sp_role_creator.destroy') }}</a>
                                         
 
                                         <form id="role-delete-form{{ $val->id }}" action="{{ route($routeName . '.destroy', $val->id) }}" method="POST" style="display: none;">
@@ -53,7 +53,7 @@
                         @endforeach
                     @else
                     <tr>
-                        <td colspan="5" class="text-center">Data not found!</td>
+                        <td colspan="5" class="text-center">{{ trans('rolemake::sp_role_creator.row_not_found') }}</td>
                     </tr>
                     @endif
                     </tbody>

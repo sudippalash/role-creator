@@ -63,8 +63,8 @@ In `config/role-creator.php` config file you should set your data.
         | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
         */
 
-        'route_name' => 'user.role',
-        'route_prefix' => 'user/role',
+        'route_name' => 'user.roles',
+        'route_prefix' => 'user/roles',
         'middleware' => [],
 
         /*
@@ -91,6 +91,18 @@ In `config/role-creator.php` config file you should set your data.
 
         /*
         |--------------------------------------------------------------------------
+        | Flash Messages
+        |--------------------------------------------------------------------------
+        |
+        | After Save/Update flash message session key name
+        | 
+        */
+
+        'flash_success' => 'success',
+        'flash_error' => 'error',
+
+        /*
+        |--------------------------------------------------------------------------
         | CSS
         |--------------------------------------------------------------------------
         |
@@ -102,29 +114,14 @@ In `config/role-creator.php` config file you should set your data.
             'card' => null,
             'input' => null,
             'btn' => null,
+            'table' => null,
+            'table_action_col_width' => null,
+            'table_action_btn' => null,
         ],
     ];
 ```
 
-Clear your config cache. This package requires access to the permission config. Generally it's bad practice to do config-caching in a development environment. If you've been caching configurations locally, clear your config cache with either of these commands:
-
-```bash
-php artisan optimize:clear
-# or
-php artisan config:clear
-```
-
-Run the migrations: After the config and migration have been published and configured, you can create the tables for this package by running:
-
-```bash
-php artisan migrate
-```
-
-In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then run the seed with this command:
-
-```bash
-php artisan db:seed --class=PermissionSeeder
-```
+In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then run the seed with this command: `php artisan db:seed --class=PermissionSeeder`.
 
 ## License
 
