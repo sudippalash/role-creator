@@ -1,6 +1,6 @@
 ## role-creator comes to Laravel
 
-![alt text](https://github.com/sudippalash/role-creator/master/img.jpg?raw=true)
+![alt text](https://github.com/sudippalash/role-creator/blob/master/img.jpg?raw=true)
 
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
