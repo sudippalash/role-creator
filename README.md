@@ -121,7 +121,17 @@ In `config/role-creator.php` config file you should set your data.
     ];
 ```
 
-In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then run the seed with this command: `php artisan db:seed --class=PermissionSeeder`.
+You should run the migrations with:
+
+```bash
+php artisan migrate
+```
+
+In `database/seeders/PermissionSeeder.php` seed file you should set your permission data and then you should run the seed with:
+
+```bash
+php artisan db:seed --class=PermissionSeeder
+```
 
 ## License
 
