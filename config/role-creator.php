@@ -28,8 +28,8 @@ return [
     | Route Name, Prefix & Middleware
     |--------------------------------------------------------------------------
     |
-    | Provide a route name for role route. Example: user.role
-    | Provide a prefix name for role url. Example: user/role
+    | Provide a route name for role route. Example: user.roles
+    | Provide a prefix name for role url. Example: user/roles
     | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
     */
 
