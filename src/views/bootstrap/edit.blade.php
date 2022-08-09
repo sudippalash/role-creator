@@ -13,7 +13,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.role.update', $data->id) }}">
+            <form method="POST" action="{{ route($routeName . '.update', $data->id) }}">
                 @csrf
                 @method('PUT')
         

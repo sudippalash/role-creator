@@ -14,14 +14,14 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-sm sortTable dataTable">
-                    <thead class="bordered">
+                <table class="table {{ $cssClass['table'] }}">
+                    <thead>
                         <tr>
                             <th>#</th>
                             <th>Name</th>
                             <th>Guard</th>
                             <th>Created At</th>
-                            <th></th>
+                            <th class="{{ $cssClass['table_action_col_width'] }}"></th>
                         </tr>
                     </thead>
 
@@ -35,7 +35,7 @@
                             <td>{{ $val->created_at }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn {{ $cssClass['btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">Action</button>
+                                    <button type="button" class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">Action</button>
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
                                         <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">Show</a>
                                         <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">Edit</a>

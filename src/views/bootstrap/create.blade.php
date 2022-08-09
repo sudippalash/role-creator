@@ -13,7 +13,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.role.store') }}">
+            <form method="POST" action="{{ route($routeName . '.store') }}">
                 @csrf
         
                 @include('rolemake::bootstrap.form')

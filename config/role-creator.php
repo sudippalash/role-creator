@@ -72,5 +72,8 @@ return [
         'card' => null,
         'input' => null,
         'btn' => null,
+        'table' => null,
+        'table_action_col_width' => null,
+        'table_action_btn' => null,
     ],
 ];
