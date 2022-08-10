@@ -1,4 +1,4 @@
-## role-creator comes to Laravel
+## Role Creator
 
 ![alt text](https://github.com/sudippalash/role-creator/blob/master/img.jpg?raw=true)
 
@@ -8,7 +8,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-`role-creator` is a role management package of `Laravel` that provides options to manage role.
+`role-creator` is a role management package of `Laravel` that provides options to manage role for auth users.
 
 Note: This package is wrapper of `spatie/laravel-permission` package.
 
