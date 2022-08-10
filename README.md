@@ -20,17 +20,31 @@ Via Composer
 composer require sudippalash/role-creator
 ```
 
-#### Publish config, migration & seeds files
+### Publish config, migrations & seeders files
 
-You should publish the migration files, the config/permission.php, config/role-creator.php config file and PermissionSeeder file with:
+
+You should publish 
+
+migrations files:
+1. `database/migrations/create_permission_tables.php`
+2. `database/migrations/add_module_column_to_permissions_table.php`, 
+
+config files:
+1. `config/permission.php`, 
+2. `config/role-creator.php` 
+
+and seeders file:
+1. `database/seeders/PermissionSeeder.php` 
+
+with:
 
 ```bash
-php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider"
+php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider" --tag=required
 ```
 
-For `config/permission.php` config file you should check `spatie/laravel-permission` package documentation.
+For `config/permission.php` file you should check `spatie/laravel-permission` package documentation.
 
-In `config/role-creator.php` config file you should set your data.
+This is the contents of the published config file `config/role-creator.php`:
 
 ```php
     return [
@@ -122,6 +136,18 @@ In `config/role-creator.php` config file you should set your data.
             'table_action_btn' => null,
         ],
     ];
+```
+
+Optionally, you can publish the views using
+
+```bash
+php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider" --tag=views
+```
+
+Optionally, you can publish the lang using
+
+```bash
+php artisan vendor:publish --provider="Sudip\RoleCreator\Providers\AppServiceProvider" --tag=lang
 ```
 
 You should run the migrations with:
