@@ -3,16 +3,16 @@
 @section(config('role-creator.section_name'))
 <section class="{{ $cssClass['container'] }}">
     <div class="{{ $cssClass['card'] }}">
-        <div class="card-header">
-            <div class="d-flex justify-content-between">
-                <h4 class="m-0">{{ trans('role-creator::sp_role_creator.role') }}</h4>
-                <div class="d-flex">
+        <div class="panel-heading">
+            <div style="height: 40px;">
+                <h4 class="pull-left">{{ trans('role-creator::sp_role_creator.role') }}</h4>
+                <div class="pull-right">
                     <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.create') }}">{{ trans('role-creator::sp_role_creator.create') }}</a>
                 </div>
             </div>
         </div>
 
-        <div class="card-body">
+        <div class="panel-body">
             <div class="table-responsive">
                 <table class="table {{ $cssClass['table'] }}">
                     <thead>
@@ -37,10 +37,15 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">{{ trans('role-creator::sp_role_creator.action') }}</button>
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
-                                        <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">{{ trans('role-creator::sp_role_creator.show') }}</a>
-                                        <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">{{ trans('role-creator::sp_role_creator.edit') }}</a>
-                                        <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">{{ trans('role-creator::sp_role_creator.destroy') }}</a>
-                                        
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">{{ trans('role-creator::sp_role_creator.show') }}</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">{{ trans('role-creator::sp_role_creator.edit') }}</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">{{ trans('role-creator::sp_role_creator.destroy') }}</a>
+                                        </li>
 
                                         <form id="role-delete-form{{ $val->id }}" action="{{ route($routeName . '.destroy', $val->id) }}" method="POST" style="display: none;">
                                             @csrf

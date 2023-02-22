@@ -3,16 +3,16 @@
 @section(config('role-creator.section_name'))
 <section class="{{ $cssClass['container'] }}">
     <div class="{{ $cssClass['card'] }}">
-        <div class="card-header">
-            <div class="d-flex justify-content-between">
-                <h4 class="m-0">{{ trans('role-creator::sp_role_creator.role_edit') }}</h4>
-                <div class="d-flex">
+        <div class="panel-heading">
+            <div style="height: 40px;">
+                <h4 class="pull-left">{{ trans('role-creator::sp_role_creator.role_edit') }}</h4>
+                <div class="pull-right">
                     <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.index') }}">{{ trans('role-creator::sp_role_creator.back_to_list') }}</a>
                 </div>
             </div>
         </div>
 
-        <div class="card-body">
+        <div class="panel-body">
             <form method="POST" action="{{ route($routeName . '.update', $data->id) }}">
                 @csrf
                 @method('PUT')

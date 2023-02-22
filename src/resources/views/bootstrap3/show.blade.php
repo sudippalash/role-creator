@@ -3,17 +3,17 @@
 @section(config('role-creator.section_name'))
 <section class="{{ $cssClass['container'] }}">
     <div class="{{ $cssClass['card'] }}">
-        <div class="card-header">
-            <div class="d-flex justify-content-between">
-                <h4 class="m-0">{{ trans('role-creator::sp_role_creator.role_show') }}</h4>
-                <div class="d-flex">
+        <div class="panel-heading">
+            <div style="height: 40px;">
+                <h4 class="pull-left">{{ trans('role-creator::sp_role_creator.role_show') }}</h4>
+                <div class="pull-right">
                     <a class="btn {{ $cssClass['btn'] }} ml-3" href="{{ route($routeName . '.index') }}">{{ trans('role-creator::sp_role_creator.back_to_list') }}</a>
                 </div>
             </div>
         </div>
 
-        <div class="card-body">
-            <table class="table browser mt-4 no-border">
+        <div class="panel-body">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td>{{ trans('role-creator::sp_role_creator.name') }}</td>
