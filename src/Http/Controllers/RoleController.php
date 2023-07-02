@@ -70,6 +70,7 @@ class RoleController extends Controller
 
         $storeData = [
             'name' => $request->name,
+            'guard_name' => config('role-creator.auth_guard_name'),
         ];
         $data = Role::create($storeData);
 
@@ -130,6 +131,7 @@ class RoleController extends Controller
 
         $storeData = [
             'name' => $request->name,
+            'guard_name' => config('role-creator.auth_guard_name'),
         ];
 
         $data->update($storeData);
