@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'roles' => 'Roles',
     'role' => 'Role',
     'role_create' => 'Role Create',
     'role_edit' => 'Role Edit',
