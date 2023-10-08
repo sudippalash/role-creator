@@ -170,9 +170,24 @@ You should copy the below line and paste in your project menu section
 <a href="{{ route(config('role-creator.route_name') . '.index') }}">{{ trans('role-creator::sp_role_creator.roles') }}</a>
 ```
 
-## License
+#
+### If want to use this for multiple guard then you can use RoleCreator trait. (optional)
+```bash
+use Sudip\RoleCreator\Traits\RoleCrud;
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+class YourController extends Controller
+{
+    use RoleCrud;
+    
+    protected $guardName, $routeName;
+
+    public function __construct()
+    {
+        $this->guardName = '{your new guard_name}';
+        $this->routeName = '{your resource route name}';
+    }
+}
+```
 
 [ico-version]: https://img.shields.io/packagist/v/sudippalash/role-creator?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/sudippalash/role-creator?style=flat-square
