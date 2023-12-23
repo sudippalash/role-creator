@@ -3,9 +3,9 @@
 namespace Sudip\RoleCreator\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Sudip\RoleCreator\Traits\RoleUtility;
 
 trait RoleCrud
 {
@@ -49,6 +49,7 @@ trait RoleCrud
         foreach($permissions as $per) {
             $permissionArr[$per->module][] = (object) [
                 'id' => $per->id,
+                'label' => Str::of($per->name)->replace($per->module, '')->trim()->replace('_', ' ')->replace('-', ' ')->title(),
                 'name' => $per->name,
             ];
         }
@@ -108,10 +109,11 @@ trait RoleCrud
         foreach($permissions as $per) {
             $permissionArr[$per->module][] = (object) [
                 'id' => $per->id,
+                'label' => Str::of($per->name)->replace($per->module, '')->trim()->replace('_', ' ')->replace('-', ' ')->title(),
                 'name' => $per->name,
             ];
         }
-        
+
         $cssClass = $this->cssGenerate();
         $routeName = $this->routeName;
         $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
