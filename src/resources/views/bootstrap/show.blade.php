@@ -41,15 +41,15 @@
                             <td>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" checked disabled>
-                                    <label class="custom-control-label">{{ ucfirst($module) }}</label>
+                                    <label class="custom-control-label">{{ Str::of($module)->replace('_', ' ')->replace('-', ' ')->title() }}</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="row">
                                     @foreach($moduleArr as $md)
                                         <div class="col-sm-2 custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" value="{{ $md }}" checked disabled>
-                                            <label class="custom-control-label">{{ str_replace($module, '', $md) }}</label><br>
+                                            <input class="custom-control-input" type="checkbox" value="{{ Str::of($module)->replace('_', ' ')->replace('-', ' ')->title() }}" checked disabled>
+                                            <label class="custom-control-label">{{ Str::of($md)->replace($module, '')->trim()->replace('_', ' ')->replace('-', ' ')->title() }}</label><br>
                                         </div>
                                     @endforeach            
                                 </div>
