@@ -24,4 +24,19 @@ trait RoleUtility
         
         return $cssClass;
     }
+
+    private function prettyPrint($string, $module = null)
+    {
+        if (! empty($module)) {
+            $string = str_replace($module, ' ', $string);
+        }
+
+
+        $separator = config('role-creator.role_permission_name_separator');
+        if (is_array($separator)) {
+            $string = trim(str_replace($separator, ' ', $string));
+        }
+
+        return ucwords($string);
+    }
 }

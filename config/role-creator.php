@@ -36,6 +36,18 @@ return [
     'route_name' => 'user.roles',
     'route_prefix' => 'user/roles',
     'middleware' => [],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Role & Permission Name Pretty Print 
+    |--------------------------------------------------------------------------
+    |
+    | You can set the delimiter to separate your role/permission name for pretty preview
+    | Example: array('-', '_', '=', '|', '/')
+    | 
+    */
+
+    'role_permission_name_separator' => ['-', '_'],
 
     /*
     |--------------------------------------------------------------------------

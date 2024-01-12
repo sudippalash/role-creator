@@ -24,7 +24,7 @@
                     <td>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="module{{ $i }}" onclick="moduleCheck({{ $i }})"{{ (array_key_exists($module, $permissioDone)) ? ' checked' : '' }}>
-                            <label class="custom-control-label" for="module{{ $i }}">{{ ucfirst($module) }}</label>
+                            <label class="custom-control-label" for="module{{ $i }}">{{ $moduleArr[0]->module }}</label>
                         </div>
                     </td>
                     <td>
@@ -32,7 +32,7 @@
                             @foreach($moduleArr as $md)
                                 <div class="col-sm-2 custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="permission{{ $md->id }}" name="permissions[]" value="{{ $md->name }}"{{ (isset($permissioDone[$module]) && in_array($md->name, $permissioDone[$module])) ? ' checked' : '' }}>
-                                    <label class="custom-control-label" for="permission{{ $md->id }}">{{ str_replace($module, '', $md->name) }}</label><br>
+                                    <label class="custom-control-label" for="permission{{ $md->id }}">{{ $md->label }}</label><br>
                                 </div>
                             @endforeach            
                         </div>

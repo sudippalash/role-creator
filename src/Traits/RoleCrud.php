@@ -50,6 +50,8 @@ trait RoleCrud
             $permissionArr[$per->module][] = (object) [
                 'id' => $per->id,
                 'name' => $per->name,
+                'label' => $this->prettyPrint($per->name, $per->module),
+                'module' => $this->prettyPrint($per->module),
             ];
         }
         
@@ -84,7 +86,7 @@ trait RoleCrud
         
         $permissioDone = [];
         foreach ($data->permissions as $per) {
-            $permissioDone[$per->module][] = $per->name;
+            $permissioDone[$this->prettyPrint($per->module)][] = $this->prettyPrint($per->name, $per->module);
         }
         
         $cssClass = $this->cssGenerate();
@@ -109,6 +111,8 @@ trait RoleCrud
             $permissionArr[$per->module][] = (object) [
                 'id' => $per->id,
                 'name' => $per->name,
+                'label' => $this->prettyPrint($per->name, $per->module),
+                'module' => $this->prettyPrint($per->module),
             ];
         }
         
