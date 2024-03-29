@@ -15,6 +15,8 @@ trait RoleCrud
     {
         $sql = Role::where('guard_name', $this->guardName)->orderBy($request->sortby ?? 'id', $request->sort ?? 'ASC');
 
+        $sql->whereNotIn('name', $this->hideRoleArray());
+
         if ($request->q && $request->q_fields) {
             $sql->where(function($q) use($request) {
                 $qFields = explode(',', $request->q_fields);
@@ -82,7 +84,7 @@ trait RoleCrud
 
     public function show(Request $request, $id)
     {
-        $data = Role::with('permissions')->where('guard_name', $this->guardName)->where('id', $id)->firstOrFail();
+        $data = Role::with('permissions')->where('guard_name', $this->guardName)->whereNotIn('name', $this->hideRoleArray())->where('id', $id)->firstOrFail();
         
         $permissioDone = [];
         foreach ($data->permissions as $per) {
@@ -98,7 +100,7 @@ trait RoleCrud
 
     public function edit(Request $request, $id)
     {
-        $data = Role::with('permissions')->where('guard_name', $this->guardName)->where('id', $id)->firstOrFail();
+        $data = Role::with('permissions')->where('guard_name', $this->guardName)->whereNotIn('name', $this->hideRoleArray())->where('id', $id)->firstOrFail();
         
         $permissioDone = [];
         foreach ($data->permissions as $per) {
@@ -130,7 +132,7 @@ trait RoleCrud
             'permissions' => 'required|array|min:1',
         ]);
 
-        $data = Role::where('guard_name', $this->guardName)->where('id', $id)->firstOrFail();
+        $data = Role::where('guard_name', $this->guardName)->whereNotIn('name', $this->hideRoleArray())->where('id', $id)->firstOrFail();
 
         $storeData = [
             'name' => $request->name,
@@ -146,9 +148,22 @@ trait RoleCrud
 
     public function destroy(Request $request, $id)
     {
-        $data = Role::where('guard_name', $this->guardName)->where('id', $id)->firstOrFail();
+        $data = Role::where('guard_name', $this->guardName)->whereNotIn('name', $this->hideRoleArray())->where('id', $id)->firstOrFail();
         $data->delete();
         
         return redirect()->route($this->routeName . '.index')->with(config('role-creator.flash_success'), trans('role-creator::sp_role_creator.delete_message'));
+    }
+
+    private function hideRoleArray()
+    {
+        if (empty($this->hideRoles)) {
+            return [];
+        }
+
+        if (is_array($this->hideRoles)) {
+            return $this->hideRoles;
+        } else {
+            return [$this->hideRoles];
+        }
     }
 }

@@ -30,7 +30,7 @@ return [
     |
     | Provide a route name for role route. Example: user.roles
     | Provide a prefix name for role url. Example: user/roles
-    | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
+    | If role route use any middleware then provide it or leave empty array. Example: ['auth'] 
     */
 
     'route_name' => 'user.roles',
@@ -59,6 +59,17 @@ return [
     */
 
     'auth_guard_name' => 'web',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Role Prevent
+    |--------------------------------------------------------------------------
+    |
+    | Those role names hide from list and prevent from edit & delete. Example ['Super Admin']
+    |
+    */
+
+    'hide_role_names' => [],
 
     /*
     |--------------------------------------------------------------------------
