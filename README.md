@@ -4,7 +4,6 @@
 
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
@@ -77,13 +76,13 @@ This is the contents of the published config file `config/role-creator.php`:
         |
         | Provide a route name for role route. Example: user.roles
         | Provide a prefix name for role url. Example: user/roles
-        | If role route use any middleware then provide it or leave empty array. Example: ['auth '] 
+        | If role route use any middleware then provide it or leave empty array. Example: ['auth'] 
         */
 
         'route_name' => 'user.roles',
         'route_prefix' => 'user/roles',
         'middleware' => [],
-    
+        
         /*
         |--------------------------------------------------------------------------
         | Role & Permission Name Pretty Print 
@@ -106,6 +105,17 @@ This is the contents of the published config file `config/role-creator.php`:
         */
 
         'auth_guard_name' => 'web',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Role Prevent
+        |--------------------------------------------------------------------------
+        |
+        | Those role names hide from list and prevent from edit & delete. Example ['Super Admin']
+        |
+        */
+
+        'hide_role_names' => [],
 
         /*
         |--------------------------------------------------------------------------
@@ -203,7 +213,6 @@ class YourController extends Controller
 
 [ico-version]: https://img.shields.io/packagist/v/sudippalash/role-creator?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/sudippalash/role-creator?style=flat-square
-[ico-license]: https://img.shields.io/github/license/sudippalash/role-creator?style=flat-square
 [link-packagist]: https://packagist.org/packages/sudippalash/role-creator
 [link-downloads]: https://packagist.org/packages/sudippalash/role-creator
 [link-author]: https://github.com/sudippalash
