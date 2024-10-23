@@ -34,20 +34,36 @@
                             <td>{{ $val->guard_name }}</td>
                             <td>{{ $val->created_at }}</td>
                             <td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">{{ trans('role-creator::sp_role_creator.action') }}</button>
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
-                                        <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">{{ trans('role-creator::sp_role_creator.show') }}</a>
-                                        <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">{{ trans('role-creator::sp_role_creator.edit') }}</a>
-                                        <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">{{ trans('role-creator::sp_role_creator.destroy') }}</a>
-                                        
-
-                                        <form id="role-delete-form{{ $val->id }}" action="{{ route($routeName . '.destroy', $val->id) }}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
+                                @if (config('role-creator.bootstrap_v') == 5)
+                                    <div class="dropdown">
+                                        <button class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ trans('role-creator::sp_role_creator.action') }}</button>
+                                        <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">{{ trans('role-creator::sp_role_creator.show') }}</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">{{ trans('role-creator::sp_role_creator.edit') }}</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">{{ trans('role-creator::sp_role_creator.destroy') }}</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="btn-group">
+                                        <button type="button" class="btn {{ $cssClass['table_action_btn'] }} btn-sm dropdown-toggle" data-toggle="dropdown" data-display="static">{{ trans('role-creator::sp_role_creator.action') }}</button>
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-lg-right">
+                                            <a class="dropdown-item" href="{{ route($routeName . '.show', $val->id) }}">{{ trans('role-creator::sp_role_creator.show') }}</a>
+                                            <a class="dropdown-item" href="{{ route($routeName . '.edit', $val->id) }}">{{ trans('role-creator::sp_role_creator.edit') }}</a>
+                                            <a class="dropdown-item" href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this role?')) { event.preventDefault(); document.getElementById('role-delete-form{{ $val->id }}').submit(); } else { event.stopPropagation(); event.preventDefault(); };">{{ trans('role-creator::sp_role_creator.destroy') }}</a>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                <form id="role-delete-form{{ $val->id }}" action="{{ route($routeName . '.destroy', $val->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </td>
                         </tr>
                         @endforeach
