@@ -38,9 +38,8 @@ trait RoleCrud
 
         $cssClass = $this->cssGenerate();
         $routeName = $this->routeName;
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
-        return view($blade . '.index', compact('records', 'routeName', 'cssClass'));
+        return view($this->getBladeName() . '.index', compact('records', 'routeName', 'cssClass'));
     }
 
     public function create()
@@ -59,9 +58,8 @@ trait RoleCrud
         
         $cssClass = $this->cssGenerate();
         $routeName = $this->routeName;
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
-        return view($blade . '.create', compact('permissioDone', 'permissionArr', 'routeName', 'cssClass'));
+        return view($this->getBladeName() . '.create', compact('permissioDone', 'permissionArr', 'routeName', 'cssClass'));
     }
 
     public function store(Request $request)
@@ -93,9 +91,8 @@ trait RoleCrud
         
         $cssClass = $this->cssGenerate();
         $routeName = $this->routeName;
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
-        return view($blade . '.show', compact('data', 'permissioDone', 'routeName', 'cssClass'));
+        return view($this->getBladeName() . '.show', compact('data', 'permissioDone', 'routeName', 'cssClass'));
     }
 
     public function edit(Request $request, $id)
@@ -120,9 +117,8 @@ trait RoleCrud
         
         $cssClass = $this->cssGenerate();
         $routeName = $this->routeName;
-        $blade = config('role-creator.bootstrap_v') == 3 ? 'role-creator::bootstrap3' : 'role-creator::bootstrap';
 
-        return view($blade . '.edit', compact('data', 'permissioDone', 'permissionArr', 'routeName', 'cssClass'));
+        return view($this->getBladeName() . '.edit', compact('data', 'permissioDone', 'permissionArr', 'routeName', 'cssClass'));
     }
 
     public function update(Request $request, $id)
@@ -165,5 +161,18 @@ trait RoleCrud
         } else {
             return [$this->hideRoles];
         }
+    }
+
+    private function getBladeName()
+    {
+        if (config('role-creator.bootstrap_v') == 3) {
+            $blade = 'role-creator::bootstrap3';
+        } elseif (config('role-creator.bootstrap_v') == 4) {
+            $blade = 'role-creator::bootstrap4';
+        } else {
+            $blade = 'role-creator::bootstrap5';
+        }
+
+        return $blade;
     }
 }
