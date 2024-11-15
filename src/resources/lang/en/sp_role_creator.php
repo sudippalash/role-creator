@@ -14,7 +14,7 @@ return [
     'destroy' => 'Delete',
     'save' => 'Save',
     'update' => 'Update',
-    
+
     'row_not_found' => 'Row not found!',
     'permission_not_found' => 'Permissions not found!',
     'back_to_list' => 'Back to List',

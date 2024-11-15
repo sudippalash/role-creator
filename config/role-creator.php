@@ -7,18 +7,18 @@ return [
     |--------------------------------------------------------------------------
     |
     | Your main layout file path name. Example: layouts.app
-    | 
+    |
     */
 
     'layout_name' => 'layouts.app',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Section Name
     |--------------------------------------------------------------------------
     |
     | Your section name which in yield in main layout file. Example: content
-    | 
+    |
     */
 
     'section_name' => 'content',
@@ -30,21 +30,21 @@ return [
     |
     | Provide a route name for role route. Example: user.roles
     | Provide a prefix name for role url. Example: user/roles
-    | If role route use any middleware then provide it or leave empty array. Example: ['auth'] 
+    | If role route use any middleware then provide it or leave empty array. Example: ['auth']
     */
 
     'route_name' => 'user.roles',
     'route_prefix' => 'user/roles',
     'middleware' => [],
-    
+
     /*
     |--------------------------------------------------------------------------
-    | Role & Permission Name Pretty Print 
+    | Role & Permission Name Pretty Print
     |--------------------------------------------------------------------------
     |
     | You can set the delimiter to separate your role/permission name for pretty preview
     | Example: array('-', '_', '=', '|', '/')
-    | 
+    |
     */
 
     'role_permission_name_separator' => ['-', '_'],
@@ -55,7 +55,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Which authentication guard you use for role. Example: web or admin
-    | 
+    |
     */
 
     'auth_guard_name' => 'web',
@@ -77,7 +77,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Which bootstrap you use in your application. Example: 3 or 4 or 5
-    | 
+    |
     */
 
     'bootstrap_v' => 4,
@@ -88,7 +88,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | After Save/Update flash message session key name
-    | 
+    |
     */
 
     'flash_success' => 'success',
@@ -99,7 +99,7 @@ return [
     | CSS
     |--------------------------------------------------------------------------
     |
-    | Add your css class in this property if you want to change design. 
+    | Add your css class in this property if you want to change design.
     */
 
     'css' => [

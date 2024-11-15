@@ -8,8 +8,12 @@ use Sudip\RoleCreator\Traits\RoleCrud;
 class RoleController extends Controller
 {
     use RoleCrud;
-    
-    protected $guardName, $routeName, $hideRoles;
+
+    protected $guardName;
+
+    protected $routeName;
+
+    protected $hideRoles;
 
     public function __construct()
     {
