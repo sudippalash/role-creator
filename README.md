@@ -189,7 +189,7 @@ php artisan db:seed --class=PermissionSeeder
 You should copy the below line and paste in your project menu section
 
 ```bash
-<a href="{{ route(config('role-creator.route_name') . '.index') }}">{{ trans('role-creator::sp_role_creator.roles') }}</a>
+<a href="{{ route(config('role-creator.route_name').'.index') }}">{{ trans('role-creator::sp_role_creator.roles') }}</a>
 ```
 
 ## Optional
