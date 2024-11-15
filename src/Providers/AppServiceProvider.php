@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'role-creator');
 
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'role-creator');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'role-creator');
 
         //Spatie Permission config & migration published
         $ds = new \ReflectionClass(\Spatie\Permission\PermissionServiceProvider::class);
@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         ], 'required');
 
         $this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/role-creator'),
+            __DIR__.'/../lang' => lang_path('vendor/role-creator'),
         ], 'lang');
 
         $this->publishes([
