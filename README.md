@@ -46,118 +46,118 @@ For `config/permission.php` file you should check `spatie/laravel-permission` pa
 This is the contents of the published config file `config/role-creator.php`:
 
 ```php
-    return [
-        /*
-        |--------------------------------------------------------------------------
-        | Extends Layout Name
-        |--------------------------------------------------------------------------
-        |
-        | Your main layout file path name. Example: layouts.app
-        | 
-        */
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Extends Layout Name
+    |--------------------------------------------------------------------------
+    |
+    | Your main layout file path name. Example: layouts.app
+    | 
+    */
 
-        'layout_name' => 'layouts.app',
-        
-        /*
-        |--------------------------------------------------------------------------
-        | Section Name
-        |--------------------------------------------------------------------------
-        |
-        | Your section name which in yield in main layout file. Example: content
-        | 
-        */
+    'layout_name' => 'layouts.app',
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Section Name
+    |--------------------------------------------------------------------------
+    |
+    | Your section name which in yield in main layout file. Example: content
+    | 
+    */
 
-        'section_name' => 'content',
+    'section_name' => 'content',
 
-        /*
-        |--------------------------------------------------------------------------
-        | Route Name, Prefix & Middleware
-        |--------------------------------------------------------------------------
-        |
-        | Provide a route name for role route. Example: user.roles
-        | Provide a prefix name for role url. Example: user/roles
-        | If role route use any middleware then provide it or leave empty array. Example: ['auth'] 
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Route Name, Prefix & Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Provide a route name for role route. Example: user.roles
+    | Provide a prefix name for role url. Example: user/roles
+    | If role route use any middleware then provide it or leave empty array. Example: ['auth'] 
+    */
 
-        'route_name' => 'user.roles',
-        'route_prefix' => 'user/roles',
-        'middleware' => [],
-        
-        /*
-        |--------------------------------------------------------------------------
-        | Role & Permission Name Pretty Print 
-        |--------------------------------------------------------------------------
-        |
-        | You can set the delimiter to separate your role/permission name for pretty preview
-        | Example: array('-', '_', '=', '|', '/')
-        | 
-        */
+    'route_name' => 'user.roles',
+    'route_prefix' => 'user/roles',
+    'middleware' => [],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Role & Permission Name Pretty Print 
+    |--------------------------------------------------------------------------
+    |
+    | You can set the delimiter to separate your role/permission name for pretty preview
+    | Example: array('-', '_', '=', '|', '/')
+    | 
+    */
 
-        'role_permission_name_separator' => ['-', '_'],
+    'role_permission_name_separator' => ['-', '_'],
 
-        /*
-        |--------------------------------------------------------------------------
-        | Auth Guard Name
-        |--------------------------------------------------------------------------
-        |
-        | Which authentication guard you use for role. Example: web or admin
-        | 
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Auth Guard Name
+    |--------------------------------------------------------------------------
+    |
+    | Which authentication guard you use for role. Example: web or admin
+    | 
+    */
 
-        'auth_guard_name' => 'web',
+    'auth_guard_name' => 'web',
 
-        /*
-        |--------------------------------------------------------------------------
-        | Role Prevent
-        |--------------------------------------------------------------------------
-        |
-        | Those role names hide from list and prevent from edit & delete. Example ['Super Admin']
-        |
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Role Prevent
+    |--------------------------------------------------------------------------
+    |
+    | Those role names hide from list and prevent from edit & delete. Example ['Super Admin']
+    |
+    */
 
-        'hide_role_names' => [],
+    'hide_role_names' => [],
 
-        /*
-        |--------------------------------------------------------------------------
-        | Bootstrap version
-        |--------------------------------------------------------------------------
-        |
-        | Which bootstrap you use in your application. Example: 3 or 4 or 5
-        | 
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Bootstrap version
+    |--------------------------------------------------------------------------
+    |
+    | Which bootstrap you use in your application. Example: 3 or 4 or 5
+    | 
+    */
 
-        'bootstrap_v' => 4,
+    'bootstrap_v' => 4,
 
-        /*
-        |--------------------------------------------------------------------------
-        | Flash Messages
-        |--------------------------------------------------------------------------
-        |
-        | After Save/Update flash message session key name
-        | 
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Flash Messages
+    |--------------------------------------------------------------------------
+    |
+    | After Save/Update flash message session key name
+    | 
+    */
 
-        'flash_success' => 'success',
-        'flash_error' => 'error',
+    'flash_success' => 'success',
+    'flash_error' => 'error',
 
-        /*
-        |--------------------------------------------------------------------------
-        | CSS
-        |--------------------------------------------------------------------------
-        |
-        | Add your css class in this property if you want to change design. 
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | CSS
+    |--------------------------------------------------------------------------
+    |
+    | Add your css class in this property if you want to change design. 
+    */
 
-        'css' => [
-            'container' => null,
-            'card' => null,
-            'input' => null,
-            'btn' => null,
-            'table' => null,
-            'table_action_col_width' => null,
-            'table_action_btn' => null,
-        ],
-    ];
+    'css' => [
+        'container' => null,
+        'card' => null,
+        'input' => null,
+        'btn' => null,
+        'table' => null,
+        'table_action_col_width' => null,
+        'table_action_btn' => null,
+    ],
+];
 ```
 
 Optionally, you can publish the views using
@@ -192,21 +192,26 @@ You should copy the below line and paste in your project menu section
 <a href="{{ route(config('role-creator.route_name') . '.index') }}">{{ trans('role-creator::sp_role_creator.roles') }}</a>
 ```
 
-#
-### If want to use this for multiple guard then you can use RoleCreator trait. (optional)
+## Optional
+### If want to use this for multiple guard then you can use RoleCreator trait.
 ```bash
 use Sudip\RoleCreator\Traits\RoleCrud;
 
 class YourController extends Controller
 {
     use RoleCrud;
-    
-    protected $guardName, $routeName;
+
+    protected $guardName;
+
+    protected $routeName;
+
+    protected $hideRoles;
 
     public function __construct()
     {
-        $this->guardName = '{your new guard_name}';
+        $this->guardName = '{your guard_name}';
         $this->routeName = '{your resource route name}';
+        $this->hideRoles = '{if you want to hide any roles}';
     }
 }
 ```
