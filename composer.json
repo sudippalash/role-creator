@@ -1,6 +1,6 @@
 {
     "name": "sudippalash/role-creator",
-    "description": "Laravel package for Role Management",
+    "description": "Laravel Package for Role Management. This package uses the Spatie Laravel Permission package and includes role CRUD functionality & Seeder for permission.",
     "keywords": [
         "Sudip",
         "Laravel Role Management",
@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^7.3|^8.0",
-        "laravel/framework": "^7.0|8.0|^9.0|^10.0|^11.0",
+        "laravel/framework": "^7.0|^8.0|^9.0|^10.0|^11.0",
         "spatie/laravel-permission": "^6.0"
     },
     "autoload": {
